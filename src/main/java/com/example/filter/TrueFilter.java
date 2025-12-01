@@ -9,11 +9,19 @@ public class TrueFilter implements Filter {
         return true;
     }
 
+    //**** REVIEW ****//
     @Override
+    public String toQL() {
+        return "TRUE";
+    }
+    //**** REVIEW ****//
+
+   /* @Override
     public String toString() {
         return "TRUE";
     }
-    
+    */
+
     @Override
     public void accept(FilterVisitor visitor) {
         visitor.visit(this);

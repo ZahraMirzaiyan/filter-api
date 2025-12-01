@@ -4,11 +4,12 @@ import java.util.Map;
 
 public class PropertyGreaterFilter implements Filter {
     private final String property;
-    private final int value;
+    
+    private final double value; // REVIEW
 
     public PropertyGreaterFilter(String property, String value) {
         this.property = property;
-        this.value = Integer.parseInt(value);
+	this.value = Double.parseDouble(value); // REVIEW
     }
 
     @Override
@@ -16,16 +17,27 @@ public class PropertyGreaterFilter implements Filter {
         String prop = resource.get(property);
         if (prop == null) return false;
         try {
-            return Integer.parseInt(prop) > value;
+              double numericProp = Double.parseDouble(prop);   // REVIEW
+	      return numericProp > value;                      // REVIEW
+            
         } catch (NumberFormatException e) {
             return false;
         }
     }
+   
+    //**** REVIEW ****//
+    @Override
+    public String toQL() {
+        return property + " > " + value;
+    } 
+    //**** REVIEW ****//
     
+/*
     @Override
     public String toString() {
         return property + " > " + value;
     }
+*/  
     
     @Override
     public void accept(FilterVisitor visitor) {

@@ -8,10 +8,19 @@ public class FalseFilter implements Filter {
         return false;
     }
 
+    //**** REVIEW ****//
     @Override
+    public String toQL() {
+        return "FALSE";
+    }
+    //**** REVIEW ****//
+
+   /* @Override
     public String toString() {
        return "FALSE";
-    }   
+    }
+   */
+    
        
     @Override
     public void accept(FilterVisitor visitor) {

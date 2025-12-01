@@ -13,11 +13,19 @@ public class PropertyPresentFilter implements Filter {
     public boolean matches(Map<String, String> resource) {
         return resource.containsKey(property);
     }
-    
+   
+    //**** REVIEW ****//
+    @Override
+    public String toQL() {
+        return property + " IS PRESENT";
+    }
+    //**** REVIEW ****//
+/*
     @Override
     public String toString() {
         return property + " is present";
     }
+*/  
     
     @Override
     public void accept(FilterVisitor visitor) {

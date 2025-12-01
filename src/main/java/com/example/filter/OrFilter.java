@@ -16,10 +16,18 @@ public class OrFilter implements Filter {
         return left.matches(resource) || right.matches(resource);
     }
     
+    //**** REVIEW ****//
+    @Override
+    public String toQL() {
+        return "(" + left.toQL() + " OR " + right.toQL() + ")";
+    }
+    //**** REVIEW ****//
+/*
     @Override
     public String toString() {
         return "(" + left + " OR " + right + ")";
     }
+*/  
        
     @Override
     public void accept(FilterVisitor visitor) {

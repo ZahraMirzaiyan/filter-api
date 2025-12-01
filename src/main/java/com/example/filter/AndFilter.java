@@ -15,11 +15,19 @@ public class AndFilter implements Filter {
     public boolean matches(Map<String, String> resource) {
         return left.matches(resource) && right.matches(resource);
     }
-    
+
+    //**** REVIEW ****//
+    @Override
+    public String toQL() {
+        return "(" + left.toQL() + " AND " + right.toQL() + ")";
+    }
+    //**** REVIEW ****//
+/*    
     @Override
     public String toString() {
         return "(" + left + " AND " + right + ")";
     }
+*/  
     
     @Override
     public void accept(FilterVisitor visitor) {
